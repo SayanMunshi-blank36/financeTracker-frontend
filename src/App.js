@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FinanceEntry from "./pages/FinanceEntry";
 import FinanceDisplay from "./pages/FinanceDisplay";
 import Signup from "./pages/Signup";
@@ -17,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </>
   );
 }

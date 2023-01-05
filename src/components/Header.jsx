@@ -1,7 +1,19 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/auth/authSlice";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -26,16 +38,26 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link to="/login">
-                <FaSignInAlt /> LogIn
-              </Link>
-            </li>
-            <li>
-              <Link to="/signup">
-                <FaUser /> SignUp
-              </Link>
-            </li>
+            {user ? (
+              <li>
+                <button className="btn text-white" onClick={onLogout}>
+                  <FaSignOutAlt /> LogOut
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">
+                    <FaSignInAlt /> LogIn
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup">
+                    <FaUser /> SignUp
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl font-mono">
@@ -44,16 +66,26 @@ const Header = () => {
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/login">
-              <FaSignInAlt /> LogIn
-            </Link>
-          </li>
-          <li>
-            <Link to="/signup">
-              <FaUser /> SignUp
-            </Link>
-          </li>
+          {user ? (
+            <li>
+              <button className="btn text-white" onClick={onLogout}>
+                <FaSignOutAlt /> LogOut
+              </button>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">
+                  <FaSignInAlt /> LogIn
+                </Link>
+              </li>
+              <li>
+                <Link to="/signup">
+                  <FaUser /> SignUp
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       {/* <div className="navbar-end">
