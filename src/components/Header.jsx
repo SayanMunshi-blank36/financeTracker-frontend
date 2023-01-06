@@ -39,11 +39,19 @@ const Header = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {user ? (
-              <li>
-                <button className="btn text-white" onClick={onLogout}>
-                  <FaSignOutAlt /> LogOut
-                </button>
-              </li>
+              <>
+                <li>
+                  <Link to="/">FINANCE ENTRY</Link>
+                </li>
+                <li>
+                  <Link to="/finance-display">FINANCE DISPLAY</Link>
+                </li>
+                <li>
+                  <button className="btn text-white" onClick={onLogout}>
+                    <FaSignOutAlt /> LogOut
+                  </button>
+                </li>
+              </>
             ) : (
               <>
                 <li>
@@ -67,11 +75,19 @@ const Header = () => {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {user ? (
-            <li>
-              <button className="btn text-white" onClick={onLogout}>
-                <FaSignOutAlt /> LogOut
-              </button>
-            </li>
+            <>
+              <li className="mx-3">
+                <Link to="/">FINANCE ENTRY</Link>
+              </li>
+              <li className="mx-3">
+                <Link to="/finance-display">FINANCE DISPLAY</Link>
+              </li>
+              <li className="mx-3">
+                <button className="btn text-white" onClick={onLogout}>
+                  <FaSignOutAlt /> LogOut
+                </button>
+              </li>
+            </>
           ) : (
             <>
               <li>
@@ -88,9 +104,6 @@ const Header = () => {
           )}
         </ul>
       </div>
-      {/* <div className="navbar-end">
-        <a className="btn">Get started</a>
-      </div> */}
     </div>
   );
 };
