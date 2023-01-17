@@ -98,8 +98,8 @@ const FinanceDisplay = () => {
         <h1 className="mt-8 md:mt-2 w-full flex items-center justify-center text-center text-3xl font-bold mx-auto">
           {(user && user.name).toUpperCase()}'s Finance Stats
         </h1>
-        <div className="md:mx-auto md:w-3/5 my-20 mx-5">
-          <h2 className="font-bold text-gray-400 text-xl">
+        <div className="md:mx-auto md:w-3/5 lg:md-4/5 my-20 mx-5">
+          <h2 className="font-bold text-gray-400 text-2xl text-center sm:text-left">
             {new Date().getFullYear()}
           </h2>
           {finances.length === 0 ? (
@@ -107,7 +107,7 @@ const FinanceDisplay = () => {
               <h3 className="font-bold">No Finance Details Added Yet</h3>
             </div>
           ) : (
-            <div className="mt-3 grid grid-cols-3 gap-4">
+            <div className="mt-3 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 grid-cols-2 gap-4">
               {uniqueMonthsSorted.map((month, idx) => {
                 return (
                   <label
