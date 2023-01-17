@@ -89,20 +89,32 @@ const FinanceDetailsModal = ({ modalData, selectedMonth }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{selectedMonth}</h3>
+          <h3 className="text-3xl underline font-bold text-center md:text-left mb-4">
+            {selectedMonth}
+          </h3>
           <div className="py-4">
-            <div className="w-72 ml-20">
-              <div className="flex items-center mb-8">
+            <div className="md:w-[56rem] w-72 md:ml-10 grid md:grid-cols-3 grid-cols-1 gap-8 mb-8">
+              <div className="mb-4 md:mb-0">
                 <LineChart chartData={userData} />
+                <p className="mt-4 text-center text-sm">
+                  Total Monthly Credit Amount: ₹ {totalMonthlyCreditAmount}
+                </p>
+              </div>
+              <div className="mb-4 md:mb-0">
                 <LineChart chartData={userData} />
+                <p className="mt-4 text-center text-sm">
+                  Total Monthly Debit Amount: ₹ {totalMonthlyDebitAmount}
+                </p>
+              </div>
+              <div className="mb-4 md:mb-0">
                 <LineChart chartData={userData} />
+                <p className="mt-4 text-center text-sm">
+                  Total Monthly Balance Amount: ₹ {totalMonthlyBalance}
+                </p>
               </div>
             </div>
-            <div className="flex items-center justify-evenly">
-              <p>Total Monthly Credit Amount: ₹ {totalMonthlyCreditAmount}</p>
-              <p>Total Monthly Debit Amount: ₹ {totalMonthlyDebitAmount}</p>
-              <p>Total Monthly Balance Amount: ₹ {totalMonthlyBalance}</p>
-            </div>
+            {/* <div className="flex items-center justify-evenly text-sm">
+            </div> */}
           </div>
         </div>
       </div>
